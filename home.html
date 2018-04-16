@@ -16,6 +16,7 @@
 <body>
     <h1>DevOps2 Library</h1>
     <h4>My name is <span id="greeting"></span></h4>
+    <span id="greeting"></span>
     <div id="library">
         <h3>Users</h3>
         <div id="users">
@@ -59,7 +60,7 @@
                 todaysDate.getFullYear();
             return greetingString;
         }
-        $('#greeting').text(greeting('Pedro'));
+        $('#greeting').text(greeting('Alejandro'));        
     </script>
 
     <!-- ======================== UNIT-TESTS LOGIC ==================== -->
@@ -78,7 +79,28 @@
 
     <script>
         function testTheTruth() {
+            var val = $('#greeting').text();
+            var Uval = this.changeNameToUppercase($('#greeting').text());            
             testResults('1 is equal to 1', 1 === 1);
+            testResults('2 is not equal to 1', 2 !== 1);
+            testResults('2 is not equal to 1 compare', 2 == 1);
+            testResults('UpperCase', this.changeNameToUppercase("alejandro") === "ALEJANDRO");
+            testResults('UpperCase', this.changeNameToUppercase("alejandro") === "alejandro");
+            testResults('Year', this.testYear(val,"2018"));
+            testResults('Year', this.testYear(val,"2019"));
+        }
+
+        function testYear(text, test) {
+            var val = text;            
+            var info = val.split("/");
+            if (info.length == 3) {
+                return info[2] === test;
+            }
+            else {
+                false;
+            }
+            
+
         }
         (function () {
             testTheTruth();
