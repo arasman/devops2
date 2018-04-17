@@ -88,6 +88,23 @@
             testResults('UpperCase', this.changeNameToUppercase("alejandro") === "alejandro");
             testResults('Year', this.testYear(val,"2018"));
             testResults('Year', this.testYear(val,"2019"));
+			console.log('1');
+			var volumes = { "items":[					
+								{
+								  "volumeInfo": {
+								  "subtitle":"My SubTitle",
+								  "title":"My SubTitle",
+								  }
+								}
+							]
+						  };
+			var info = this.mapVolumes(volumes);
+			alert(info);
+			var test = 'Volumes title = ' + volumes.items[0].volumeInfo.title + "," + volumes.items[0].volumeInfo.subtitle;
+			alert(test);
+			//console.log(info);
+			//console.log(test);
+			testResults('mapVolumes', info === test);
         }
 
         function testYear(text, test) {
@@ -99,12 +116,28 @@
             else {
                 false;
             }
-            
-
         }
         (function () {
             testTheTruth();
         })()
-    </script>
+		
+  /*var googleBooksApi = "https://www.googleapis.com/books/v1/volumes?q=";
+  var query = "gabriel garcia marquez";
+  $.ajax({
+    url: googleBooksApi + query,
+    success: function(volumes){	  
+      console.log('vols=', volumes);
+      mapVolumes(volumes)	  
+    }
+  });*/
+  function mapVolumes(volumes) {
+	var info = 'Volumes title = ' + volumes.items[0].volumeInfo.title + "," + volumes.items[0].volumeInfo.subtitle;
+	console.log(info);
+    /*console.log('Volumes found = ', volumes.totalItems);
+	console.log("FirstItem - SubTitle:" + volumes.items[0].volumeInfo.subtitle)
+    console.log("FirstItem - Title:" + volumes.items[0].volumeInfo.title)*/
+	return info;
+  }
+</script>
 </body>
 </html>
